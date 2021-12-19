@@ -1,0 +1,12 @@
+{
+  "author": "David Howell",
+  "identifier": "com.tildeish.omnifocus-plugins",
+  "defaultLocale": "en",
+  "version": "1.0",
+  "description": "Collection of OmniFocus plug-ins.",
+  "actions": [
+    {
+      "identifier": "openNoteUrl"
+    }    
+  ]
+}
