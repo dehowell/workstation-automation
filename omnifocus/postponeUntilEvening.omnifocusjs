@@ -1,0 +1,36 @@
+/*{
+    "author": "David Howell",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.tildeish.omnifocus.postponeUntilEvening",
+    "version": "0.1",
+    "description": "Defer the selected tasks until evening (5PM).",
+    "label": "Postpone Until Evening"
+}*/
+(() => {
+    const ONE_DAY = new DateComponents();
+    ONE_DAY.day = 1;
+
+    var tonight = function() {
+        let components = new DateComponents();
+        let now = Calendar.current.dateComponentsFromDate(new Date());
+        components.year = now.year;
+        components.month = now.month;
+        components.day = now.day;
+        components.hour = 17; // 5 PM
+        return Calendar.current.dateFromDateComponents(components);
+    }
+
+    var action = new PlugIn.Action(function(selection) {
+        selection.tasks.forEach(task => {
+            task.deferDate = tonight();
+        });
+    });
+
+    // If needed, uncomment, and add a function that returns true if the current selection is appropriate for the action.
+    action.validate = function(selection){
+        return selection.tasks.length > 0;
+    };
+
+    return action;
+})();

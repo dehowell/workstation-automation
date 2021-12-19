@@ -1,0 +1,23 @@
+/*{
+    "author": "David Howell",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.tildeish.omnifocus.dropOnce",
+    "version": "0.1",
+    "description": "Drop a single occurrence of a repeating task, to avoid having to answer the prompt.",
+    "label": "Drop Once",
+}*/
+(() => {
+    var action = new PlugIn.Action(function(selection) {
+        let task = selection.tasks[0];
+        task.drop(false);
+    });
+
+    action.validate = function(selection, sender){
+        // validation code
+        // selection options: tasks, projects, folders, tags
+        return (selection.tasks.length === 1)
+    };
+
+    return action;
+})();

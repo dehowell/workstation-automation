@@ -1,0 +1,26 @@
+/*{
+    "author": "David Howell",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.tildeish.omnifocus.openProjectWindow",
+    "version": "0.1",
+    "description": "Open the selected project, focused, in its own window.",
+    "label": "Open Project Window"
+}*/
+(() => {
+    var action = new PlugIn.Action(function(selection) {
+        let project = selection.projects[0];
+        document.newWindow().then(w => {
+            w.perspective = Perspective.BuiltIn.Projects;
+            w.selectObjects([project]);
+            w.focus = [project];
+        });
+
+    });
+
+    action.validate = function(selection){
+        return app.platformName == "macOS" && selection.projects.length === 1;
+    };
+
+    return action;
+})();

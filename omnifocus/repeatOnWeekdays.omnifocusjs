@@ -1,0 +1,25 @@
+/*{
+    "author": "David Howell",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.tildeish.omnifocus.repeat-on-weekdays",
+    "version": "0.1",
+    "description": "Mark the selected task as repeating after completion on weekdays. ",
+    "label": "Repeat on Weekdays"
+}*/
+(() => {
+    const WEEKDAYS = new Task.RepetitionRule("FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR", Task.RepetitionMethod.DeferUntilDate);
+    
+    var action = new PlugIn.Action(function(selection) {
+        let tasks = selection.tasks;
+        tasks.forEach(task => {
+            task.repetitionRule = WEEKDAYS;
+        });
+    });
+
+    action.validate = function(selection){
+        return selection.tasks.length > 0;
+    };
+
+    return action;
+})();
