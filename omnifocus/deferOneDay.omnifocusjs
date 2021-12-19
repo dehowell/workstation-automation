@@ -1,3 +1,12 @@
+/*{
+    "author": "David Howell",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.tildeish.omnifocus.deferOneDay",
+    "version": "0.1",
+    "description": "Defers the selected tasks by one day.",
+    "label": "Defer One Day"
+}*/
 (() => {
     const ONE_DAY = new DateComponents();
     ONE_DAY.day = 1;

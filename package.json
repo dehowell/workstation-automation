@@ -1,0 +1,10 @@
+{
+  "name": "workstation-automation",
+  "version": "1.0.0",
+  "description": "A series of AppleScripts, plugins, etc. for various desktop applications that I use.",
+  "scripts": {
+    "deploy": "scripts/deploy.sh"
+  },
+  "author": "David Howell",
+  "license": "ISC"
+}

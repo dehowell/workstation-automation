@@ -1,3 +1,12 @@
+/*{
+    "author": "David Howell",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.tildeish.omnifocus.openNoteUrl",
+    "version": "0.1",
+    "description": "Opens the first URL in the selected note",
+    "label": "Open Note URL"
+}*/
 (() => {
 
 	/**
