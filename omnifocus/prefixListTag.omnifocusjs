@@ -1,0 +1,28 @@
+/*{
+    "author": "David Howell",
+    "targets": ["omnifocus"],
+    "type": "action",
+    "identifier": "com.tildeish.omnifocus.prefixListTag",
+    "version": "0.1",
+    "description": "Moves the 'The List' tag to the first in the list.",
+    "label": "Prefix List Tag"
+}*/
+(() => {
+    const THE_LIST = tagNamed("The List");
+
+    var action = new PlugIn.Action(function(selection) {
+        selection.tasks.forEach(task => {
+            let tags = task.tags;
+            task.clearTags();
+            task.addTag(THE_LIST);
+            tags.forEach(tag => task.addTag(tag));
+        });       
+    });
+
+    // If needed, uncomment, and add a function that returns true if the current selection is appropriate for the action.
+    action.validate = function(selection){
+        return selection.tasks.length > 0;
+    };
+        
+    return action;
+})();
