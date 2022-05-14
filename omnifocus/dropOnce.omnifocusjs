@@ -9,14 +9,11 @@
 }*/
 (() => {
     var action = new PlugIn.Action(function(selection) {
-        let task = selection.tasks[0];
-        task.drop(false);
+        selection.tasks.forEach(task => task.drop(false));
     });
 
-    action.validate = function(selection, sender){
-        // validation code
-        // selection options: tasks, projects, folders, tags
-        return (selection.tasks.length === 1)
+    action.validate = function(selection, sender) {
+        return (selection.tasks.length > 0)
     };
 
     return action;
