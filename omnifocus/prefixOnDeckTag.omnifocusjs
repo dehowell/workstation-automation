@@ -4,17 +4,17 @@
     "type": "action",
     "identifier": "com.tildeish.omnifocus.prefixListTag",
     "version": "0.1",
-    "description": "Moves the 'The List' tag to the first in the list.",
+    "description": "Moves the 'On Deck' tag to the first in the list.",
     "label": "Prefix List Tag"
 }*/
 (() => {
-    const THE_LIST = tagNamed("The List");
+    const ON_DECK = tagNamed("On Deck");
 
     var action = new PlugIn.Action(function(selection) {
         selection.tasks.forEach(task => {
             let tags = task.tags;
             task.clearTags();
-            task.addTag(THE_LIST);
+            task.addTag(ON_DECK);
             tags.forEach(tag => task.addTag(tag));
         });       
     });
